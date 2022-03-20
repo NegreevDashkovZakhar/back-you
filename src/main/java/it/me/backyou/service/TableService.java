@@ -21,6 +21,12 @@ public class TableService {
         queryExecutor.dropTable(getTableName(apiKey, tableName));
     }
 
+    public void renameTable(final String apiKey, final String oldName, final String newName) {
+        String oldResult = getTableName(apiKey, oldName);
+        String newResult = getTableName(apiKey, newName);
+        queryExecutor.renameTable(oldResult, newResult);
+    }
+
     private String getTableName(final String apiKey, final String tableName) {
         return apiKey + "__" + tableName;
     }

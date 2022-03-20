@@ -1,8 +1,10 @@
 package it.me.backyou.query;
 
+import it.me.backyou.controller.exception.ColumnAlreadyExistException;
 import it.me.backyou.controller.exception.NoSuchColumnException;
 import it.me.backyou.controller.exception.NoSuchTableException;
 import it.me.backyou.controller.exception.TableAlreadyExistException;
+import it.me.backyou.controller.exception.UnknownArgumentException;
 import it.me.backyou.controller.exception.UnknownException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -34,6 +36,8 @@ public class QueryExecutor {
         exceptionMap.put("42P07", new TableAlreadyExistException());
         exceptionMap.put("42P01", new NoSuchTableException());
         exceptionMap.put("42703", new NoSuchColumnException());
+        exceptionMap.put("42701", new ColumnAlreadyExistException());
+        exceptionMap.put("42704", new UnknownArgumentException());
     }
 
     public Object getAllEntries(final String table) {
@@ -83,6 +87,17 @@ public class QueryExecutor {
                     "WHERE table_name = '" + tableName + "';";
             ResultSet rs = statement.executeQuery(sql);
             return MapperUtils.mapAllRows(rs);
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
+        }
+    }
+
+    public void addColumn(final String tableName, final String columnName, final String columnType) {
+        try {
+            String sql = "ALTER TABLE " + tableName +
+                    " ADD COLUMN " + columnName + " " + columnType + ";";
+            statement.execute(sql);
         } catch (SQLException e) {
             System.out.println(e.getSQLState());
             throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());

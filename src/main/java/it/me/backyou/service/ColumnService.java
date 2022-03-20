@@ -24,4 +24,8 @@ public class ColumnService {
         String convertedColumnType = columnTypeMap.getOrDefault(columnType, columnType);
         queryExecutor.addColumn(ServiceUtils.getTableName(apiKey, tableName), columnName, convertedColumnType);
     }
+
+    public void renameColumn(final String apiKey, final String tableName, final String oldName, final String newName) {
+        queryExecutor.renameColumn(ServiceUtils.getTableName(apiKey, tableName), oldName, newName);
+    }
 }

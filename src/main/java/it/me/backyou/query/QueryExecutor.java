@@ -108,4 +108,15 @@ public class QueryExecutor {
             throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
         }
     }
+
+    public void renameColumn(final String tableName, final String oldName, final String newName) {
+        try {
+            String sql = "ALTER TABLE " + tableName +
+                    " RENAME COLUMN " + oldName + " TO " + newName + ";";
+            statement.execute(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
+        }
+    }
 }

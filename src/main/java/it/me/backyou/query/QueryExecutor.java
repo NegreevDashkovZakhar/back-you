@@ -7,13 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class QueryExecutor {
+    private final Map<String, ResponseStatusException> exceptionMap;
     private final Statement statement;
 
     @Autowired
@@ -24,6 +28,10 @@ public class QueryExecutor {
         dataSource.setPassword(env.getProperty("spring.datasource.password"));
         dataSource.setUrl(env.getProperty("spring.datasource.url"));
         statement = dataSource.getConnection().createStatement();
+
+        exceptionMap = new HashMap<>();
+        exceptionMap.put("42P07", new TableAlreadyExistException());
+        exceptionMap.put("42P01", new NoSuchTableException());
     }
 
     public Object getAllEntries(final String table) {
@@ -43,7 +51,7 @@ public class QueryExecutor {
                     ");";
             statement.executeUpdate(sql);
         } catch (SQLException e) {
-            throw new TableAlreadyExistException();
+            throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
         }
     }
 
@@ -52,7 +60,18 @@ public class QueryExecutor {
             String sql = "DROP TABLE " + tableName + ";";
             statement.execute(sql);
         } catch (SQLException e) {
-            throw new NoSuchTableException();
+            throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
         }
     }
+
+    public void renameTable(final String oldName, final String newName) {
+        try {
+            String sql = "ALTER TABLE " + oldName +
+                    " RENAME TO " + newName + ";";
+            statement.execute(sql);
+        } catch (SQLException e) {
+            throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
+        }
+    }
+
 }

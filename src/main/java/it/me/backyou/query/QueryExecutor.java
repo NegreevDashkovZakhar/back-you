@@ -1,6 +1,7 @@
 package it.me.backyou.query;
 
 import it.me.backyou.controller.exception.ColumnAlreadyExistException;
+import it.me.backyou.controller.exception.InvalidArgumentException;
 import it.me.backyou.controller.exception.NoSuchColumnException;
 import it.me.backyou.controller.exception.NoSuchTableException;
 import it.me.backyou.controller.exception.TableAlreadyExistException;
@@ -39,6 +40,7 @@ public class QueryExecutor {
         exceptionMap.put("42703", new NoSuchColumnException());
         exceptionMap.put("42701", new ColumnAlreadyExistException());
         exceptionMap.put("42704", new UnknownArgumentException());
+        exceptionMap.put("42804", new InvalidArgumentException());
     }
 
     public Object getAllEntries(final String table) {

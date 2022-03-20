@@ -1,8 +1,5 @@
 package it.me.backyou.query;
 
-
-import org.springframework.jdbc.core.RowMapper;
-
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;

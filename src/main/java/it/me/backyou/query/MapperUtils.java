@@ -13,13 +13,15 @@ public class MapperUtils {
         List<Object> result = new ArrayList<>();
         ResultSetMetaData rsmd = rs.getMetaData();
         int columnCount = rsmd.getColumnCount();
-        do {
+        while (rs.next()) {
             Map<String, Object> map = new HashMap<>();
             for (int i = 1; i <= columnCount; ++i) {
+                System.out.println(rsmd.getColumnName(i));
+                System.out.println(rs.getObject(i));
                 map.put(rsmd.getColumnName(i), rs.getObject(i));
             }
             result.add(map);
-        } while (rs.next());
+        }
         return result;
     }
 }

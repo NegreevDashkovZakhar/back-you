@@ -42,4 +42,10 @@ public class ColumnController {
                                  @PathVariable final String columnName, @PathVariable final String newType) {
         columnService.changeColumnType(apiKey, tableName, columnName, newType);
     }
+
+    @PutMapping(path = "/{apiKey}/{tableName}/{columnName}/default/{defaultValue}")
+    public void changeColumnDefault(@PathVariable final String apiKey, @PathVariable final String tableName,
+                                    @PathVariable final String columnName, @PathVariable final String defaultValue) {
+        columnService.changeColumnDefault(apiKey, tableName, columnName, defaultValue);
+    }
 }

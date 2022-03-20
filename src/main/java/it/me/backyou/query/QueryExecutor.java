@@ -142,4 +142,15 @@ public class QueryExecutor {
             throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
         }
     }
+
+    public void changeColumnDefault(final String tableName, final String columnName, final String defaultValue) {
+        try {
+            String sql = "ALTER TABLE " + tableName +
+                    " ALTER COLUMN " + columnName + " SET DEFAULT '" + defaultValue + "';";
+            statement.execute(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
+        }
+    }
 }

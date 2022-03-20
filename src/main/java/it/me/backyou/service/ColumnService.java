@@ -37,4 +37,9 @@ public class ColumnService {
                                  final String newType) {
         queryExecutor.changeColumnType(ServiceUtils.getTableName(apiKey, tableName), columnName, newType);
     }
+
+    public void changeColumnDefault(final String apiKey, final String tableName, final String columnName,
+                                    final String defaultValue) {
+        queryExecutor.changeColumnDefault(ServiceUtils.getTableName(apiKey, tableName), columnName, defaultValue);
+    }
 }

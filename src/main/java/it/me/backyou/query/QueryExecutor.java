@@ -1,5 +1,6 @@
 package it.me.backyou.query;
 
+import it.me.backyou.controller.exception.NoSuchColumnException;
 import it.me.backyou.controller.exception.NoSuchTableException;
 import it.me.backyou.controller.exception.TableAlreadyExistException;
 import it.me.backyou.controller.exception.UnknownException;
@@ -32,6 +33,7 @@ public class QueryExecutor {
         exceptionMap = new HashMap<>();
         exceptionMap.put("42P07", new TableAlreadyExistException());
         exceptionMap.put("42P01", new NoSuchTableException());
+        exceptionMap.put("42703", new NoSuchColumnException());
     }
 
     public Object getAllEntries(final String table) {
@@ -74,4 +76,16 @@ public class QueryExecutor {
         }
     }
 
+    public Object getTableHeaderData(final String tableName) {
+        try {
+            String sql = "SELECT column_name, data_type " +
+                    "FROM information_schema.columns " +
+                    "WHERE table_name = '" + tableName + "';";
+            ResultSet rs = statement.executeQuery(sql);
+            return MapperUtils.mapAllRows(rs);
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
+        }
+    }
 }

@@ -27,6 +27,10 @@ public class TableService {
         queryExecutor.renameTable(oldResult, newResult);
     }
 
+    public Object getTableHeaderData(final String apiKey, final String tableName) {
+        return queryExecutor.getTableHeaderData(getTableName(apiKey, tableName));
+    }
+
     private String getTableName(final String apiKey, final String tableName) {
         return apiKey + "__" + tableName;
     }

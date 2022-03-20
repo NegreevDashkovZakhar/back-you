@@ -6,6 +6,7 @@ import it.me.backyou.controller.exception.NoSuchTableException;
 import it.me.backyou.controller.exception.TableAlreadyExistException;
 import it.me.backyou.controller.exception.UnknownArgumentException;
 import it.me.backyou.controller.exception.UnknownException;
+import it.me.backyou.query.exception.EmptyResultSetException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
@@ -47,6 +48,8 @@ public class QueryExecutor {
             return MapperUtils.mapAllRows(rs);
         } catch (SQLException e) {
             throw new UnknownException();
+        } catch (EmptyResultSetException e) {
+            return new Object[]{};
         }
     }
 
@@ -90,6 +93,8 @@ public class QueryExecutor {
         } catch (SQLException e) {
             System.out.println(e.getSQLState());
             throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
+        } catch (EmptyResultSetException e) {
+            throw new NoSuchTableException();
         }
     }
 

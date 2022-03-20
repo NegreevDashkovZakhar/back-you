@@ -36,4 +36,10 @@ public class ColumnController {
                              @PathVariable final String columnName) {
         columnService.deleteColumn(apiKey, tableName, columnName);
     }
+
+    @PutMapping(path = "/{apiKey}/{tableName}/{columnName}/type/{newType}")
+    public void changeColumnType(@PathVariable final String apiKey, @PathVariable final String tableName,
+                                 @PathVariable final String columnName, @PathVariable final String newType) {
+        columnService.changeColumnType(apiKey, tableName, columnName, newType);
+    }
 }

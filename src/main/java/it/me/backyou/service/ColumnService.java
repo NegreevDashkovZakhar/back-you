@@ -32,4 +32,9 @@ public class ColumnService {
     public void deleteColumn(final String apiKey, final String tableName, final String columnName) {
         queryExecutor.deleteColumn(ServiceUtils.getTableName(apiKey, tableName), columnName);
     }
+
+    public void changeColumnType(final String apiKey, final String tableName, final String columnName,
+                                 final String newType) {
+        queryExecutor.changeColumnType(ServiceUtils.getTableName(apiKey, tableName), columnName, newType);
+    }
 }

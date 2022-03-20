@@ -85,7 +85,7 @@ public class QueryExecutor {
 
     public Object getTableHeaderData(final String tableName) {
         try {
-            String sql = "SELECT column_name, data_type " +
+            String sql = "SELECT column_name, data_type, column_default " +
                     "FROM information_schema.columns " +
                     "WHERE table_name = '" + tableName + "';";
             ResultSet rs = statement.executeQuery(sql);

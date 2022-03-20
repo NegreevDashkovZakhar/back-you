@@ -28,4 +28,8 @@ public class ColumnService {
     public void renameColumn(final String apiKey, final String tableName, final String oldName, final String newName) {
         queryExecutor.renameColumn(ServiceUtils.getTableName(apiKey, tableName), oldName, newName);
     }
+
+    public void deleteColumn(final String apiKey, final String tableName, final String columnName) {
+        queryExecutor.deleteColumn(ServiceUtils.getTableName(apiKey, tableName), columnName);
+    }
 }

@@ -119,4 +119,15 @@ public class QueryExecutor {
             throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
         }
     }
+
+    public void deleteColumn(final String tableName, final String columnName) {
+        try {
+            String sql = "ALTER TABLE " + tableName +
+                    " DROP COLUMN " + columnName + ";";
+            statement.execute(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
+        }
+    }
 }

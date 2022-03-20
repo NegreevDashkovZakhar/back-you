@@ -1,6 +1,5 @@
 package it.me.backyou.service;
 
-import it.me.backyou.controller.exception.TableAlreadyExistException;
 import it.me.backyou.query.QueryExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +14,14 @@ public class TableService {
     }
 
     public void createTable(final String apiKey, final String tableName) {
-        queryExecutor.createTable(apiKey + "__" + tableName);
+        queryExecutor.createTable(getTableName(apiKey, tableName));
+    }
+
+    public void dropTable(final String apiKey, final String tableName) {
+        queryExecutor.dropTable(getTableName(apiKey, tableName));
+    }
+
+    private String getTableName(final String apiKey, final String tableName) {
+        return apiKey + "__" + tableName;
     }
 }

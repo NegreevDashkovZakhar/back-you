@@ -43,15 +43,41 @@ public class QueryExecutor {
         exceptionMap.put("42804", new InvalidArgumentException());
     }
 
-    public Object getAllEntries(final String table) {
+    public Object getAllEntries(final String tableName) {
         try {
-            String sql = "SELECT * FROM " + table + ";";
+            String sql = "SELECT * FROM " + tableName + ";";
             ResultSet rs = statement.executeQuery(sql);
             return MapperUtils.mapAllRows(rs);
         } catch (SQLException e) {
-            throw new UnknownException();
+            System.out.println(e.getSQLState());
+            throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
         } catch (EmptyResultSetException e) {
             return new Object[]{};
+        }
+    }
+
+    public void addEntry(final String tableName, final String[] columns, final String[] values) {
+        try {
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.append("INSERT INTO ");
+            sqlBuilder.append(tableName);
+            sqlBuilder.append("(");
+            for (int i = 0; i < columns.length - 1; i++) {
+                sqlBuilder.append(columns[i]);
+                sqlBuilder.append(", ");
+            }
+            sqlBuilder.append(columns[columns.length-1]);
+            sqlBuilder.append(") VALUES (");
+            for (int i = 0; i < values.length - 1; i++) {
+                sqlBuilder.append(values[i]);
+                sqlBuilder.append(", ");
+            }
+            sqlBuilder.append(values[values.length-1]);
+            sqlBuilder.append(");");
+            statement.execute(sqlBuilder.toString());
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
         }
     }
 

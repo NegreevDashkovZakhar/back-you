@@ -20,4 +20,9 @@ public class EntryService {
     public void addEntry(final String apiKey, final String tableName, final String[] columns, final String[] values) {
         queryExecutor.addEntry(ServiceUtils.getTableName(apiKey, tableName), columns, values);
     }
+
+    public void deleteEntries(final String apiKey, final String tableName, final String columnName,
+                              final String value) {
+        queryExecutor.removeEntries(ServiceUtils.getTableName(apiKey, tableName), columnName, value);
+    }
 }

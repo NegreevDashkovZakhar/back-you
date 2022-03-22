@@ -66,15 +66,26 @@ public class QueryExecutor {
                 sqlBuilder.append(columns[i]);
                 sqlBuilder.append(", ");
             }
-            sqlBuilder.append(columns[columns.length-1]);
-            sqlBuilder.append(") VALUES (");
+            sqlBuilder.append(columns[columns.length - 1]);
+            sqlBuilder.append(") VALUES ('");
             for (int i = 0; i < values.length - 1; i++) {
                 sqlBuilder.append(values[i]);
-                sqlBuilder.append(", ");
+                sqlBuilder.append("', '");
             }
-            sqlBuilder.append(values[values.length-1]);
-            sqlBuilder.append(");");
+            sqlBuilder.append(values[values.length - 1]);
+            sqlBuilder.append("');");
             statement.execute(sqlBuilder.toString());
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+            throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());
+        }
+    }
+
+    public void removeEntries(final String tableName, final String columnName, final String value) {
+        try {
+            String sql = "DELETE FROM " + tableName
+                    + " WHERE " + columnName + "='" + value + "';";
+            statement.execute(sql);
         } catch (SQLException e) {
             System.out.println(e.getSQLState());
             throw exceptionMap.getOrDefault(e.getSQLState(), new UnknownException());

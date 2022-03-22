@@ -1,6 +1,6 @@
-package it.me.backyou.query;
+package it.me.backyou.repository.query;
 
-import it.me.backyou.query.exception.EmptyResultSetException;
+import it.me.backyou.repository.query.exception.EmptyResultSetException;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

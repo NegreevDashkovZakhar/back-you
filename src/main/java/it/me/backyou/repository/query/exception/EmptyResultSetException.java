@@ -1,4 +1,4 @@
-package it.me.backyou.query.exception;
+package it.me.backyou.repository.query.exception;
 
 public class EmptyResultSetException extends Exception {
     public EmptyResultSetException() {

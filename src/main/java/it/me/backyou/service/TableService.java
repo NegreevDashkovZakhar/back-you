@@ -1,34 +1,34 @@
 package it.me.backyou.service;
 
-import it.me.backyou.query.QueryExecutor;
+import it.me.backyou.repository.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TableService {
-    private final QueryExecutor queryExecutor;
+    private final TableRepository tableRepository;
 
     @Autowired
-    public TableService(final QueryExecutor queryExecutor) {
-        this.queryExecutor = queryExecutor;
+    public TableService(final TableRepository tableRepository) {
+        this.tableRepository = tableRepository;
     }
 
     public void createTable(final String apiKey, final String tableName) {
-        queryExecutor.createTable(ServiceUtils.getTableName(apiKey, tableName));
+        tableRepository.createTable(ServiceUtils.getTableName(apiKey, tableName));
     }
 
     public void dropTable(final String apiKey, final String tableName) {
-        queryExecutor.dropTable(ServiceUtils.getTableName(apiKey, tableName));
+        tableRepository.dropTable(ServiceUtils.getTableName(apiKey, tableName));
     }
 
     public void renameTable(final String apiKey, final String oldName, final String newName) {
         String oldResult = ServiceUtils.getTableName(apiKey, oldName);
         String newResult = ServiceUtils.getTableName(apiKey, newName);
-        queryExecutor.renameTable(oldResult, newResult);
+        tableRepository.renameTable(oldResult, newResult);
     }
 
     public Object getTableHeaderData(final String apiKey, final String tableName) {
-        return queryExecutor.getTableHeaderData(ServiceUtils.getTableName(apiKey, tableName));
+        return tableRepository.getTableHeaderData(ServiceUtils.getTableName(apiKey, tableName));
     }
 
 }

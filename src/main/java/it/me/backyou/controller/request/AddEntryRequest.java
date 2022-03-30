@@ -25,11 +25,3 @@ public class AddEntryRequest {
         this.values = values;
     }
 }
-/*
-
-{
-    values: [],
-    entries: []
-}
-
-* */

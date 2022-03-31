@@ -3,6 +3,9 @@ package it.me.backyou.controller.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Exception thrown when argument in request can not be identified
+ */
 public class UnknownArgumentException extends ResponseStatusException {
     /**
      * Default constructor initializing ResponseStatusException

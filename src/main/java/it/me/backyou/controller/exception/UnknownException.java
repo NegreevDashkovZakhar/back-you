@@ -4,6 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Exception thrown when error occurred, but it can not be identified
+ */
 public class UnknownException extends ResponseStatusException {
     /**
      * Default constructor initializing ResponseStatusException

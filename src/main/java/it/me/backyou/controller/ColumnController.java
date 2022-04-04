@@ -1,6 +1,6 @@
 package it.me.backyou.controller;
 
-import it.me.backyou.service.ColumnService;
+import it.me.backyou.service.IColumnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "column")
 public class ColumnController {
-    private final ColumnService columnService;
+    private final IColumnService columnService;
 
     /**
      * Default constructor setting column service
@@ -19,7 +19,7 @@ public class ColumnController {
      * @param columnService column service for controller
      */
     @Autowired
-    public ColumnController(final ColumnService columnService) {
+    public ColumnController(final IColumnService columnService) {
         this.columnService = columnService;
     }
 

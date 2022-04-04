@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @see it.me.backyou.service.ColumnService
  */
 @Component
-public class ColumnRepository {
+public class ColumnRepository implements IColumnRepository {
     private final QueryExecutor queryExecutor;
 
     /**
@@ -24,51 +24,28 @@ public class ColumnRepository {
         this.queryExecutor = queryExecutor;
     }
 
-    /**
-     * Method executing add column query
-     *
-     * @param tableName  final name of the table
-     * @param columnName name of the new column
-     * @param columnType type of the new column
-     */
+    @Override
     public void addColumn(final String tableName, final String columnName, final String columnType) {
         String sql = "ALTER TABLE " + tableName +
                 " ADD COLUMN " + columnName + " " + columnType + ";";
         queryExecutor.execute(sql);
     }
 
-    /**
-     * Method executing rename column query
-     *
-     * @param tableName final name of the table
-     * @param oldName   old name of the column
-     * @param newName   new name for the column
-     */
+    @Override
     public void renameColumn(final String tableName, final String oldName, final String newName) {
         String sql = "ALTER TABLE " + tableName +
                 " RENAME COLUMN " + oldName + " TO " + newName + ";";
         queryExecutor.execute(sql);
     }
 
-    /**
-     * Method executing delete column query
-     *
-     * @param tableName  final name of the table
-     * @param columnName name of the column that will be deleted
-     */
+    @Override
     public void deleteColumn(final String tableName, final String columnName) {
         String sql = "ALTER TABLE " + tableName +
                 " DROP COLUMN " + columnName + ";";
         queryExecutor.execute(sql);
     }
 
-    /**
-     * Method executing change column type query
-     *
-     * @param tableName  final name of the table
-     * @param columnName name of the column, type of which will be changed
-     * @param newType    new type of the specified column
-     */
+    @Override
     public void changeColumnType(final String tableName, final String columnName, final String newType) {
         String sql = "ALTER TABLE " + tableName +
                 " ALTER COLUMN " + columnName + " TYPE " + newType +
@@ -76,14 +53,7 @@ public class ColumnRepository {
         queryExecutor.execute(sql);
     }
 
-    /**
-     * Method executing change column default query.
-     * Sets default value for column
-     *
-     * @param tableName    final name of the table
-     * @param columnName   name of the column which default value will be set
-     * @param defaultValue value that will be set as default for specified column
-     */
+    @Override
     public void changeColumnDefault(final String tableName, final String columnName, final String defaultValue) {
         String sql = "ALTER TABLE " + tableName +
                 " ALTER COLUMN " + columnName + " SET DEFAULT '" + defaultValue + "';";

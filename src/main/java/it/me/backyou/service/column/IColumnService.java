@@ -1,4 +1,4 @@
-package it.me.backyou.service;
+package it.me.backyou.service.column;
 
 /**
  * Service interface holding logic for working with columns

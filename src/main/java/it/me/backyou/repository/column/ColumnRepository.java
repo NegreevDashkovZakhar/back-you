@@ -1,6 +1,7 @@
-package it.me.backyou.repository;
+package it.me.backyou.repository.column;
 
 import it.me.backyou.repository.query.QueryExecutor;
+import it.me.backyou.service.column.ColumnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Class executing queries for columns
  * Used in column service
  *
- * @see it.me.backyou.service.ColumnService
+ * @see ColumnService
  */
 @Component
 public class ColumnRepository implements IColumnRepository {

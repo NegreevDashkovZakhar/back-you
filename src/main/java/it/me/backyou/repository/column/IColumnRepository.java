@@ -1,4 +1,4 @@
-package it.me.backyou.repository;
+package it.me.backyou.repository.column;
 
 /**
  * Interface for repository working with database on columns

@@ -1,4 +1,4 @@
-package it.me.backyou.repository;
+package it.me.backyou.repository.table;
 
 /**
  * Repository interface for working with tables in database

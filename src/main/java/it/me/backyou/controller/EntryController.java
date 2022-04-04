@@ -1,7 +1,7 @@
 package it.me.backyou.controller;
 
 import it.me.backyou.controller.request.AddEntryRequest;
-import it.me.backyou.service.IEntryService;
+import it.me.backyou.service.entry.IEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

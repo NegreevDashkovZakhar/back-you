@@ -1,4 +1,4 @@
-package it.me.backyou.service;
+package it.me.backyou.service.table;
 
 /**
  * Service interface holding logic for working with tables

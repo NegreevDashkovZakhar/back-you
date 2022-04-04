@@ -1,6 +1,6 @@
 package it.me.backyou.controller;
 
-import it.me.backyou.service.ITableService;
+import it.me.backyou.service.table.ITableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

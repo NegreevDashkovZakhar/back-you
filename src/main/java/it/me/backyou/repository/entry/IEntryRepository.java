@@ -1,4 +1,4 @@
-package it.me.backyou.repository;
+package it.me.backyou.repository.entry;
 
 /**
  * Repository interface for working with entries in database

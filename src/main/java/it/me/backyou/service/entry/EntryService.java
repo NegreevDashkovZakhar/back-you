@@ -1,6 +1,7 @@
-package it.me.backyou.service;
+package it.me.backyou.service.entry;
 
-import it.me.backyou.repository.IEntryRepository;
+import it.me.backyou.repository.entry.IEntryRepository;
+import it.me.backyou.service.ServiceUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

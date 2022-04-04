@@ -1,4 +1,4 @@
-package it.me.backyou.repository;
+package it.me.backyou.repository.table;
 
 import it.me.backyou.repository.query.QueryExecutor;
 import org.springframework.beans.factory.annotation.Autowired;

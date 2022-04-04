@@ -1,6 +1,7 @@
-package it.me.backyou.service;
+package it.me.backyou.service.column;
 
-import it.me.backyou.repository.IColumnRepository;
+import it.me.backyou.repository.column.IColumnRepository;
+import it.me.backyou.service.ServiceUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

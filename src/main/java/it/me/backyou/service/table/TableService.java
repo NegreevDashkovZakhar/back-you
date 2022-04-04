@@ -1,6 +1,7 @@
-package it.me.backyou.service;
+package it.me.backyou.service.table;
 
-import it.me.backyou.repository.ITableRepository;
+import it.me.backyou.repository.table.ITableRepository;
+import it.me.backyou.service.ServiceUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,12 @@
 package it.me.backyou.repository.query;
 
-import it.me.backyou.controller.exception.*;
+import it.me.backyou.controller.exception.ColumnAlreadyExistException;
+import it.me.backyou.controller.exception.InvalidArgumentException;
+import it.me.backyou.controller.exception.NoSuchColumnException;
+import it.me.backyou.controller.exception.NoSuchTableException;
+import it.me.backyou.controller.exception.TableAlreadyExistException;
+import it.me.backyou.controller.exception.UnknownArgumentException;
+import it.me.backyou.controller.exception.UnknownException;
 import it.me.backyou.repository.query.exception.EmptyResultSetException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;

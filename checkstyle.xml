@@ -15,6 +15,7 @@
     <module name="JavadocPackage"/>
     <module name="TreeWalker">
         <module name="OneStatementPerLine"/>
+        <module name="UnusedImports"/>
         <module name="MultipleVariableDeclarations"/>
         <module name="ArrayTypeStyle"/>
         <module name="MissingSwitchDefault"/>

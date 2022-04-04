@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Executes sql queries for working with tables
  */
 @Component
-public class TableRepository {
+public class TableRepository implements ITableRepository {
     private final QueryExecutor queryExecutor;
 
     /**
@@ -22,11 +22,7 @@ public class TableRepository {
         this.queryExecutor = queryExecutor;
     }
 
-    /**
-     * Method creating new table
-     *
-     * @param tableName name of the new table
-     */
+    @Override
     public void createTable(final String tableName) {
         String sql = "CREATE TABLE " + tableName + "(" +
                 "id serial PRIMARY KEY" +
@@ -34,34 +30,20 @@ public class TableRepository {
         queryExecutor.execute(sql);
     }
 
-    /**
-     * Method deleting existing table
-     *
-     * @param tableName name of the deleting table
-     */
+    @Override
     public void dropTable(final String tableName) {
         String sql = "DROP TABLE " + tableName + ";";
         queryExecutor.execute(sql);
     }
 
-    /**
-     * Method renaming existing table
-     *
-     * @param oldName old name of the table
-     * @param newName new name for the table
-     */
+    @Override
     public void renameTable(final String oldName, final String newName) {
         String sql = "ALTER TABLE " + oldName +
                 " RENAME TO " + newName + ";";
         queryExecutor.execute(sql);
     }
 
-    /**
-     * Method getting data about table columns
-     *
-     * @param tableName name of the table
-     * @return object with data about table columns
-     */
+    @Override
     public Object getTableHeaderData(final String tableName) {
         String sql = "SELECT column_name, data_type, column_default " +
                 "FROM information_schema.columns " +

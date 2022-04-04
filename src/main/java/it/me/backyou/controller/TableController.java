@@ -1,6 +1,6 @@
 package it.me.backyou.controller;
 
-import it.me.backyou.service.TableService;
+import it.me.backyou.service.ITableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "table")
 public class TableController {
-    private final TableService tableService;
+    private final ITableService tableService;
 
     /**
      * Default constructor setting table service
@@ -19,7 +19,7 @@ public class TableController {
      * @param tableService table service for controller
      */
     @Autowired
-    public TableController(final TableService tableService) {
+    public TableController(final ITableService tableService) {
         this.tableService = tableService;
     }
 

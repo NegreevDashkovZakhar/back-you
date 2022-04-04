@@ -1,7 +1,7 @@
 package it.me.backyou.controller;
 
 import it.me.backyou.controller.request.AddEntryRequest;
-import it.me.backyou.service.EntryService;
+import it.me.backyou.service.IEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "entry")
 public class EntryController {
-    private final EntryService entryService;
+    private final IEntryService entryService;
 
     /**
      * Default constructor setting entry service for controller
@@ -20,7 +20,7 @@ public class EntryController {
      * @param entryService entry service for controller
      */
     @Autowired
-    public EntryController(final EntryService entryService) {
+    public EntryController(final IEntryService entryService) {
         this.entryService = entryService;
     }
 

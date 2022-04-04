@@ -1,12 +1,6 @@
 package it.me.backyou.repository.query;
 
-import it.me.backyou.controller.exception.ColumnAlreadyExistException;
-import it.me.backyou.controller.exception.InvalidArgumentException;
-import it.me.backyou.controller.exception.NoSuchColumnException;
-import it.me.backyou.controller.exception.NoSuchTableException;
-import it.me.backyou.controller.exception.TableAlreadyExistException;
-import it.me.backyou.controller.exception.UnknownArgumentException;
-import it.me.backyou.controller.exception.UnknownException;
+import it.me.backyou.controller.exception.*;
 import it.me.backyou.repository.query.exception.EmptyResultSetException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -20,11 +14,22 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class executing and parsing given SQL requests
+ * Throws errors from specified table
+ */
 @Component
 public class QueryExecutor {
     private final Map<String, ResponseStatusException> exceptionMap;
     private final Statement statement;
 
+    /**
+     * Default constructor creating statement for sql execution and exception map
+     * Environment variable is autowired and used to create statement object
+     *
+     * @param env given environment for sql execution
+     * @throws SQLException when could not create statement (should not be thrown)
+     */
     @Autowired
     public QueryExecutor(final Environment env) throws SQLException {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
@@ -43,6 +48,12 @@ public class QueryExecutor {
         exceptionMap.put("42804", new InvalidArgumentException());
     }
 
+    /**
+     * Method executing given sql query
+     * Does not return any results
+     *
+     * @param sql sql query for execution
+     */
     public void execute(final String sql) {
         try {
             statement.execute(sql);
@@ -52,6 +63,13 @@ public class QueryExecutor {
         }
     }
 
+    /**
+     * Method executing given sql query and parsing returned result
+     * Used for Select and similar queries
+     *
+     * @param sql sql query for execution
+     * @return object containing parsed data from sql quering result
+     */
     public Object executeToObject(final String sql) {
         try {
             ResultSet rs = statement.executeQuery(sql);

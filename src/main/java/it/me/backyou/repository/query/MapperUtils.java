@@ -10,7 +10,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Static util class
+ * Maps result sets received from sql queries to object
+ */
 public class MapperUtils {
+    /**
+     * Method mapping all rows of the result set to object
+     *
+     * @param rs result set that must be mapped
+     * @return object with data got from result set
+     * @throws SQLException            when invalid result set is given
+     * @throws EmptyResultSetException when result set did not contain any entries
+     */
     public static Object mapAllRows(final ResultSet rs) throws SQLException, EmptyResultSetException {
         int rowsCount = 0;
         List<Object> result = new ArrayList<>();

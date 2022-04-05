@@ -12,7 +12,7 @@
     <artifactId>back-you</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>back-you</name>
-    <description>PET project. Helps developing front-end apps with usage of back-you DB.</description>
+    <description>PET project. Helps to develop front-end apps with usage of back-you DB.</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>

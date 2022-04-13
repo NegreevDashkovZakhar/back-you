@@ -1,5 +1,7 @@
 package it.me.backyou.service;
 
+import it.me.backyou.controller.exception.InvalidArgumentException;
+
 /**
  * Helper class.
  * Does unified service jobs
@@ -13,6 +15,9 @@ public class ServiceUtils {
      * @return final name of the table in database
      */
     public static String getTableName(final String apiKey, final String tableName) {
+        if (tableName.equals("") || apiKey.equals("")) {
+            throw new InvalidArgumentException();
+        }
         return apiKey + "__" + tableName;
     }
 }

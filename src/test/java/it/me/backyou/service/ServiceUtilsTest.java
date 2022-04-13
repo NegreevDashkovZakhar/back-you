@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 class ServiceUtilsTest {
     @Test
-    public static void testNormalStringsGetTableName() {
+    public void testNormalStringsGetTableName() {
         String apiKey = "testapikey";
         String tableName = "testtablename";
         String actual = ServiceUtils.getTableName(apiKey, tableName);
@@ -17,7 +17,7 @@ class ServiceUtilsTest {
     }
 
     @Test
-    public static void testEmptyStringGetTableName() {
+    public void testEmptyStringGetTableName() {
         String apiKey = "testapikey";
         String tableName = "";
         try {

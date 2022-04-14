@@ -49,7 +49,8 @@ public class ColumnService implements IColumnService {
     @Override
     public void changeColumnType(final String apiKey, final String tableName, final String columnName,
                                  final String newType) {
-        columnRepository.changeColumnType(ServiceUtils.getTableName(apiKey, tableName), columnName, newType);
+        String convertedColumnType = columnTypeMap.getOrDefault(newType, newType);
+        columnRepository.changeColumnType(ServiceUtils.getTableName(apiKey, tableName), columnName, convertedColumnType);
     }
 
     @Override

@@ -1,8 +1,9 @@
 package it.me.backyou.user.service;
 
-import it.me.backyou.user.User;
 import it.me.backyou.apikey.ApiKey;
 import it.me.backyou.apikey.ApiKeyRepository;
+import it.me.backyou.user.User;
+import it.me.backyou.user.exception.UserAlreadyExistException;
 import it.me.backyou.user.exception.UserNotFoundException;
 import it.me.backyou.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class UserService implements IUserService {
 
     @Override
     public long registerUser(final String email, final String password) {
+        if (userExist(email)) {
+            throw new UserAlreadyExistException();
+        }
         User user = new User(email, password);
         userRepository.save(user);
         return user.getUserId();
@@ -67,5 +71,9 @@ public class UserService implements IUserService {
         } catch (Exception e) {
             throw new UserNotFoundException();
         }
+    }
+
+    private boolean userExist(final String email) {
+        return userRepository.userExist(email);
     }
 }

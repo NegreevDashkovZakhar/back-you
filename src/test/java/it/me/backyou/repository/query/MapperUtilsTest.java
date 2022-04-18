@@ -1,6 +1,7 @@
 package it.me.backyou.repository.query;
 
-import it.me.backyou.repository.query.exception.EmptyResultSetException;
+import it.me.backyou.storage.repository.query.MapperUtils;
+import it.me.backyou.storage.repository.query.exception.EmptyResultSetException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

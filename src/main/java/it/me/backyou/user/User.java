@@ -1,6 +1,6 @@
 package it.me.backyou.user;
 
-import it.me.backyou.user.apikey.ApiKey;
+import it.me.backyou.apikey.ApiKey;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,12 +21,31 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
+    @Column(unique = true)
     private String email;
     private String password;
-    @OneToMany(targetEntity = ApiKey.class)
+
+    @OneToMany(mappedBy = "user")
     private Set<ApiKey> apiKeys;
+
+    /**
+     * Default constructor. does not set any fields
+     */
+    public User() {
+    }
+
+    /**
+     * Constructor initializing email and password fields
+     *
+     * @param email    given user email
+     * @param password given user password
+     */
+    public User(final String email, final String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     public Set<ApiKey> getApiKeys() {
         return apiKeys;
@@ -52,11 +71,11 @@ public class User {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

@@ -1,5 +1,0 @@
-/**
- * Package containing exceptions for application logic
- * Such as NoSuchTable, ColumnAlreadyExist exceptions etc.
- */
-package it.me.backyou.controller.exception;

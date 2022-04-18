@@ -1,13 +1,11 @@
 package it.me.backyou.service.table;
 
-import it.me.backyou.repository.table.ITableRepository;
-import it.me.backyou.service.ServiceUtils;
+import it.me.backyou.storage.repository.table.ITableRepository;
+import it.me.backyou.storage.service.ServiceUtils;
+import it.me.backyou.storage.service.table.TableService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TableServiceTest {
     private static TableService tableService;

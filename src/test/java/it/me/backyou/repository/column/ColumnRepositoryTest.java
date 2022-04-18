@@ -1,11 +1,10 @@
 package it.me.backyou.repository.column;
 
-import it.me.backyou.repository.query.QueryExecutor;
+import it.me.backyou.storage.repository.column.ColumnRepository;
+import it.me.backyou.storage.repository.query.QueryExecutor;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ColumnRepositoryTest {
     private static ColumnRepository columnRepository;

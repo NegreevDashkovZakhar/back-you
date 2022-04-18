@@ -1,11 +1,12 @@
 package it.me.backyou.repository.table;
 
-import it.me.backyou.repository.query.QueryExecutor;
+import it.me.backyou.storage.repository.query.QueryExecutor;
+import it.me.backyou.storage.repository.table.TableRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TableRepositoryTest {
     private static TableRepository tableRepository;

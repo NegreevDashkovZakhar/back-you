@@ -1,7 +1,8 @@
 package it.me.backyou.controller;
 
-import it.me.backyou.controller.request.AddEntryRequest;
-import it.me.backyou.service.entry.IEntryService;
+import it.me.backyou.storage.controller.EntryController;
+import it.me.backyou.storage.controller.request.AddEntryRequest;
+import it.me.backyou.storage.service.entry.IEntryService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

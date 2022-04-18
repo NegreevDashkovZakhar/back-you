@@ -1,6 +1,7 @@
 package it.me.backyou.controller;
 
-import it.me.backyou.service.column.IColumnService;
+import it.me.backyou.storage.controller.ColumnController;
+import it.me.backyou.storage.service.column.IColumnService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

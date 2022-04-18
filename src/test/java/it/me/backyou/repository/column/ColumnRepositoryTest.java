@@ -5,8 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ColumnRepositoryTest {
     private static ColumnRepository columnRepository;
     private static QueryExecutor queryExecutor;

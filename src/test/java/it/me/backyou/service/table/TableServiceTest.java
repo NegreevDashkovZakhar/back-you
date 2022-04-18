@@ -5,9 +5,6 @@ import it.me.backyou.service.ServiceUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TableServiceTest {
     private static TableService tableService;

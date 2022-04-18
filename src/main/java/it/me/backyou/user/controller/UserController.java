@@ -3,6 +3,7 @@ package it.me.backyou.user.controller;
 import it.me.backyou.user.response.ApiKeysResponse;
 import it.me.backyou.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -73,5 +74,18 @@ public class UserController {
     @GetMapping(path = "/{email}/{password}")
     public Long getUserId(@PathVariable final String email, @PathVariable final String password) {
         return userService.getUserId(email, password);
+    }
+
+    /**
+     * Method deleting users api key
+     *
+     * @param email    user email
+     * @param password user password
+     * @param apiKey   api key to be deleted
+     */
+    @DeleteMapping(path = "/apiKey/{email}/{password}")
+    public void deleteApiKey(@PathVariable final String email, @PathVariable final String password,
+                             @RequestBody final String apiKey) {
+
     }
 }

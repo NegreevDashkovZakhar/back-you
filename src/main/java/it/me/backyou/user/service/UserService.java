@@ -3,6 +3,7 @@ package it.me.backyou.user.service;
 import it.me.backyou.apikey.ApiKey;
 import it.me.backyou.apikey.ApiKeyRepository;
 import it.me.backyou.user.User;
+import it.me.backyou.user.exception.ApiKeyOrUserNotFoundException;
 import it.me.backyou.user.exception.UserAlreadyExistException;
 import it.me.backyou.user.exception.UserNotFoundException;
 import it.me.backyou.user.repository.UserRepository;
@@ -70,6 +71,19 @@ public class UserService implements IUserService {
             return userRepository.getUserId(email, password);
         } catch (Exception e) {
             throw new UserNotFoundException();
+        }
+    }
+
+    @Override
+    public void deleteUserApiKey(long userId, String apiKey) {
+        try {
+            ApiKey apiKeyInstance = apiKeyRepository.getApiKeyByValue(apiKey);
+            if (apiKeyInstance.getUser().getUserId() != userId) {
+                throw new ApiKeyOrUserNotFoundException();
+            }
+            apiKeyRepository.delete(apiKeyInstance);
+        } catch (Exception e) {
+            throw new ApiKeyOrUserNotFoundException();
         }
     }
 

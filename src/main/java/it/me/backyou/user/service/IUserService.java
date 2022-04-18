@@ -38,4 +38,12 @@ public interface IUserService {
      * @return specified user id
      */
     long getUserId(String email, String password);
+
+    /**
+     * Method deleting users api key if it exists and belongs to specified user
+     *
+     * @param userId specified user id
+     * @param apiKey specified api key
+     */
+    void deleteUserApiKey(long userId, String apiKey);
 }

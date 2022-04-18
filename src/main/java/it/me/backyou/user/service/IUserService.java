@@ -1,4 +1,6 @@
-package it.me.backyou.user;
+package it.me.backyou.user.service;
+
+import it.me.backyou.user.apikey.ApiKey;
 
 import java.util.Set;
 
@@ -11,7 +13,7 @@ public interface IUserService {
      *
      * @return new user id
      */
-    long registerUser();
+    long registerUser(String email, String password);
 
     /**
      * Method for getting all api keys of the user with specified id
@@ -19,7 +21,7 @@ public interface IUserService {
      * @param userId id of the needed user
      * @return set of specified user api keys
      */
-    Set<String> getUserApiKeys(long userId);
+    Set<ApiKey> getUserApiKeys(long userId);
 
     /**
      * Method adding new api key for the specified user
@@ -35,5 +37,5 @@ public interface IUserService {
      * @param email users email
      * @return specified user id
      */
-    long getUserId(String email);
+    long getUserId(String email, String password);
 }

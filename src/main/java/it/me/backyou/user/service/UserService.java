@@ -1,8 +1,8 @@
 package it.me.backyou.user.service;
 
 import it.me.backyou.user.User;
-import it.me.backyou.user.apikey.ApiKey;
-import it.me.backyou.user.apikey.ApiKeyRepository;
+import it.me.backyou.apikey.ApiKey;
+import it.me.backyou.apikey.ApiKeyRepository;
 import it.me.backyou.user.exception.UserNotFoundException;
 import it.me.backyou.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

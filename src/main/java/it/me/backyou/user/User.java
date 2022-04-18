@@ -1,6 +1,6 @@
 package it.me.backyou.user;
 
-import it.me.backyou.user.apikey.ApiKey;
+import it.me.backyou.apikey.ApiKey;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

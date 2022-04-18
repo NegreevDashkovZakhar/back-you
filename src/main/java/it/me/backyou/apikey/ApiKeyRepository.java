@@ -1,4 +1,4 @@
-package it.me.backyou.user.apikey;
+package it.me.backyou.apikey;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,6 +1,6 @@
 package it.me.backyou.user.service;
 
-import it.me.backyou.user.apikey.ApiKey;
+import it.me.backyou.apikey.ApiKey;
 
 import java.util.Set;
 

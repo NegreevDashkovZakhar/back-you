@@ -1,7 +1,8 @@
 package it.me.backyou.service.column;
 
-import it.me.backyou.repository.column.IColumnRepository;
-import it.me.backyou.service.ServiceUtils;
+import it.me.backyou.storage.repository.column.IColumnRepository;
+import it.me.backyou.storage.service.ServiceUtils;
+import it.me.backyou.storage.service.column.ColumnService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

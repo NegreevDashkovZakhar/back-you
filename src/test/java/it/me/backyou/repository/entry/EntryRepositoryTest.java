@@ -1,6 +1,7 @@
 package it.me.backyou.repository.entry;
 
-import it.me.backyou.repository.query.QueryExecutor;
+import it.me.backyou.storage.repository.entry.EntryRepository;
+import it.me.backyou.storage.repository.query.QueryExecutor;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

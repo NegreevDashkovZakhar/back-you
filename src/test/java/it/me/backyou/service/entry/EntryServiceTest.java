@@ -1,7 +1,8 @@
 package it.me.backyou.service.entry;
 
-import it.me.backyou.repository.entry.IEntryRepository;
-import it.me.backyou.service.ServiceUtils;
+import it.me.backyou.storage.repository.entry.IEntryRepository;
+import it.me.backyou.storage.service.ServiceUtils;
+import it.me.backyou.storage.service.entry.EntryService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

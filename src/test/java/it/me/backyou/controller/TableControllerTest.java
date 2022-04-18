@@ -1,6 +1,7 @@
 package it.me.backyou.controller;
 
-import it.me.backyou.service.table.ITableService;
+import it.me.backyou.storage.controller.TableController;
+import it.me.backyou.storage.service.table.ITableService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

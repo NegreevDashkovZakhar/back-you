@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.UUID;
 
 /**
  * Entity class
@@ -35,7 +34,7 @@ public class ApiKey {
      * Default constructor initializing api key from generated random UUID
      */
     public ApiKey() {
-        this.apiKey = UUID.randomUUID().toString();
+        this.apiKey = ApiKeyUtils.generateApiKey();
     }
 
     /**

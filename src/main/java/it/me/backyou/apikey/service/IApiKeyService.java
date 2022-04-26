@@ -1,4 +1,4 @@
-package it.me.backyou.apikey;
+package it.me.backyou.apikey.service;
 
 /**
  * Service interface for working with api keys

@@ -1,7 +1,7 @@
 package it.me.backyou.user.service;
 
 import it.me.backyou.apikey.ApiKey;
-import it.me.backyou.apikey.ApiKeyRepository;
+import it.me.backyou.apikey.repository.ApiKeyRepository;
 import it.me.backyou.user.User;
 import it.me.backyou.user.exception.ApiKeyOrUserNotFoundException;
 import it.me.backyou.user.exception.UserAlreadyExistException;

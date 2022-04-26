@@ -1,5 +1,6 @@
-package it.me.backyou.apikey;
+package it.me.backyou.apikey.service;
 
+import it.me.backyou.apikey.repository.ApiKeyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

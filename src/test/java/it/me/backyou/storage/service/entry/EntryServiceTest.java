@@ -1,4 +1,4 @@
-package it.me.backyou.service.entry;
+package it.me.backyou.storage.service.entry;
 
 import it.me.backyou.storage.repository.entry.IEntryRepository;
 import it.me.backyou.storage.service.ServiceUtils;

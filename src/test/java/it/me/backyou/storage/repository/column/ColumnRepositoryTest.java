@@ -1,4 +1,4 @@
-package it.me.backyou.repository.column;
+package it.me.backyou.storage.repository.column;
 
 import it.me.backyou.storage.repository.column.ColumnRepository;
 import it.me.backyou.storage.repository.query.QueryExecutor;

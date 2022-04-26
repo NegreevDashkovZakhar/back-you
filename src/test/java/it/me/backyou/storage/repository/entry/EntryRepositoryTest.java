@@ -1,4 +1,4 @@
-package it.me.backyou.repository.entry;
+package it.me.backyou.storage.repository.entry;
 
 import it.me.backyou.storage.repository.entry.EntryRepository;
 import it.me.backyou.storage.repository.query.QueryExecutor;

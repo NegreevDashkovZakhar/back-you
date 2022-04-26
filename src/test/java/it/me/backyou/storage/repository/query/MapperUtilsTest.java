@@ -1,4 +1,4 @@
-package it.me.backyou.repository.query;
+package it.me.backyou.storage.repository.query;
 
 import it.me.backyou.storage.repository.query.MapperUtils;
 import it.me.backyou.storage.repository.query.exception.EmptyResultSetException;

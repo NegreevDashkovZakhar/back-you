@@ -1,4 +1,4 @@
-package it.me.backyou.controller;
+package it.me.backyou.storage.controller;
 
 import it.me.backyou.storage.controller.EntryController;
 import it.me.backyou.storage.controller.request.AddEntryRequest;

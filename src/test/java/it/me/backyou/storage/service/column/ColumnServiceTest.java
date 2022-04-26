@@ -1,4 +1,4 @@
-package it.me.backyou.service.column;
+package it.me.backyou.storage.service.column;
 
 import it.me.backyou.storage.repository.column.IColumnRepository;
 import it.me.backyou.storage.service.ServiceUtils;

@@ -1,4 +1,4 @@
-package it.me.backyou.service;
+package it.me.backyou.storage.service;
 
 import it.me.backyou.storage.controller.exception.InvalidArgumentException;
 import it.me.backyou.storage.service.ServiceUtils;

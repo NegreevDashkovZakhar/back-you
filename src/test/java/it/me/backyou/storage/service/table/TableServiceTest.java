@@ -1,4 +1,4 @@
-package it.me.backyou.service.table;
+package it.me.backyou.storage.service.table;
 
 import it.me.backyou.storage.repository.table.ITableRepository;
 import it.me.backyou.storage.service.ServiceUtils;

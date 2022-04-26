@@ -1,5 +1,6 @@
 package it.me.backyou.apikey.service;
 
+import it.me.backyou.apikey.ApiKey;
 import it.me.backyou.apikey.repository.ApiKeyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,10 @@ public class ApiKeyService implements IApiKeyService {
 
     @Override
     public void removeApiKey(final String apiKey) {
-        apiKeyRepository.delete(apiKeyRepository.getApiKeyByValue(apiKey));
+        ApiKey apiKeyInstance = apiKeyRepository.getApiKeyByValue(apiKey);
+        if (apiKeyInstance != null) {
+            apiKeyRepository.delete(apiKeyInstance);
+        }
     }
 
     @Override

@@ -23,11 +23,11 @@ public class ApiKeyService implements IApiKeyService {
 
     @Override
     public void removeApiKey(final String apiKey) {
-        apiKeyRepository.deleteById(apiKey);
+        apiKeyRepository.delete(apiKeyRepository.getApiKeyByValue(apiKey));
     }
 
     @Override
     public boolean hasApiKey(final String apiKey) {
-        return apiKeyRepository.existsById(apiKey);
+        return apiKeyRepository.hasApiKey(apiKey) == 1;
     }
 }

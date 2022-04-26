@@ -88,6 +88,10 @@ public class UserService implements IUserService {
     }
 
     private boolean userExist(final String email) {
-        return userRepository.userExist(email);
+        try {
+            return userRepository.userExist(email) == 1;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

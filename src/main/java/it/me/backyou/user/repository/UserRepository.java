@@ -12,11 +12,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * Method checking whether user with such email exists
      *
      * @param email email of the user to be checked
-     * @return true if user with such email is registered, false otherwise
+     * @return 1 if user with such email is registered, 0 otherwise
      */
     @Query(nativeQuery = true,
-            value = "SELECT 1 FROM users WHERE email = ?1 ;")
-    boolean userExist(String email);
+            value = "SELECT COUNT (1) FROM users WHERE email = ?1 ;")
+    int userExist(String email);
 
     /**
      * Method for getting users id from email and password

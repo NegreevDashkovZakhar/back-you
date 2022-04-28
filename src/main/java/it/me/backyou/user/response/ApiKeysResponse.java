@@ -5,6 +5,7 @@ import it.me.backyou.apikey.ApiKey;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -40,5 +41,18 @@ public class ApiKeysResponse {
 
     public List<String> getApiKeys() {
         return apiKeys;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ApiKeysResponse that = (ApiKeysResponse) o;
+        return apiKeys.equals(that.apiKeys);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(apiKeys);
     }
 }

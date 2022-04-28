@@ -25,13 +25,14 @@ public class ColumnServiceProxy implements IColumnService {
      * @param apiKeyService api key service to verify keys
      */
     @Autowired
-    public ColumnServiceProxy(IColumnService actualService, IApiKeyService apiKeyService) {
+    public ColumnServiceProxy(final IColumnService actualService, final IApiKeyService apiKeyService) {
         this.actualService = actualService;
         this.apiKeyService = apiKeyService;
     }
 
     @Override
-    public void addColumn(String apiKey, String tableName, String columnName, String columnType) {
+    public void addColumn(final String apiKey, final String tableName, final String columnName,
+                          final String columnType) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }
@@ -39,7 +40,7 @@ public class ColumnServiceProxy implements IColumnService {
     }
 
     @Override
-    public void renameColumn(String apiKey, String tableName, String oldName, String newName) {
+    public void renameColumn(final String apiKey, final String tableName, final String oldName, final String newName) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }
@@ -47,7 +48,7 @@ public class ColumnServiceProxy implements IColumnService {
     }
 
     @Override
-    public void deleteColumn(String apiKey, String tableName, String columnName) {
+    public void deleteColumn(final String apiKey, final String tableName, final String columnName) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }
@@ -55,7 +56,8 @@ public class ColumnServiceProxy implements IColumnService {
     }
 
     @Override
-    public void changeColumnType(String apiKey, String tableName, String columnName, String newType) {
+    public void changeColumnType(final String apiKey, final String tableName, final String columnName,
+                                 final String newType) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }
@@ -63,7 +65,8 @@ public class ColumnServiceProxy implements IColumnService {
     }
 
     @Override
-    public void changeColumnDefault(String apiKey, String tableName, String columnName, String defaultValue) {
+    public void changeColumnDefault(final String apiKey, final String tableName, final String columnName,
+                                    final String defaultValue) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }

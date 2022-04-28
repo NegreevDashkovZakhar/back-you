@@ -75,7 +75,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void deleteUserApiKey(long userId, String apiKey) {
+    public void deleteUserApiKey(final long userId, final String apiKey) {
         try {
             ApiKey apiKeyInstance = apiKeyRepository.getApiKeyByValue(apiKey);
             if (apiKeyInstance.getUser().getUserId() != userId) {

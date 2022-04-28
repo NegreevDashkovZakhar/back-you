@@ -25,13 +25,13 @@ public class TableServiceProxy implements ITableService {
      * @param apiKeyService api key service for verifying api keys
      */
     @Autowired
-    public TableServiceProxy(ITableService actualService, IApiKeyService apiKeyService) {
+    public TableServiceProxy(final ITableService actualService, final IApiKeyService apiKeyService) {
         this.actualService = actualService;
         this.apiKeyService = apiKeyService;
     }
 
     @Override
-    public void createTable(String apiKey, String tableName) {
+    public void createTable(final String apiKey, final String tableName) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }
@@ -39,7 +39,7 @@ public class TableServiceProxy implements ITableService {
     }
 
     @Override
-    public void dropTable(String apiKey, String tableName) {
+    public void dropTable(final String apiKey, final String tableName) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }
@@ -47,7 +47,7 @@ public class TableServiceProxy implements ITableService {
     }
 
     @Override
-    public void renameTable(String apiKey, String oldName, String newName) {
+    public void renameTable(final String apiKey, final String oldName, final String newName) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }
@@ -55,7 +55,7 @@ public class TableServiceProxy implements ITableService {
     }
 
     @Override
-    public Object getTableHeaderData(String apiKey, String tableName) {
+    public Object getTableHeaderData(final String apiKey, final String tableName) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }

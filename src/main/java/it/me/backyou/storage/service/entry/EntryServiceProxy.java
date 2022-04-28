@@ -25,13 +25,13 @@ public class EntryServiceProxy implements IEntryService {
      * @param apiKeyService api key service to verify keys
      */
     @Autowired
-    public EntryServiceProxy(IEntryService actualService, IApiKeyService apiKeyService) {
+    public EntryServiceProxy(final IEntryService actualService, final IApiKeyService apiKeyService) {
         this.actualService = actualService;
         this.apiKeyService = apiKeyService;
     }
 
     @Override
-    public Object getAllEntries(String apiKey, String tableName) {
+    public Object getAllEntries(final String apiKey, final String tableName) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }
@@ -39,7 +39,7 @@ public class EntryServiceProxy implements IEntryService {
     }
 
     @Override
-    public void addEntry(String apiKey, String tableName, String[] columns, String[] values) {
+    public void addEntry(final String apiKey, final String tableName, final String[] columns, final String[] values) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }
@@ -47,7 +47,8 @@ public class EntryServiceProxy implements IEntryService {
     }
 
     @Override
-    public void deleteEntries(String apiKey, String tableName, String columnName, String value) {
+    public void deleteEntries(final String apiKey, final String tableName, final String columnName,
+                              final String value) {
         if (!apiKeyService.hasApiKey(apiKey)) {
             throw new InvalidApiKeyException();
         }

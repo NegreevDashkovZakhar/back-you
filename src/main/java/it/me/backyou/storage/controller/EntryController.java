@@ -2,6 +2,8 @@ package it.me.backyou.storage.controller;
 
 import it.me.backyou.storage.controller.request.AddEntryRequest;
 import it.me.backyou.storage.service.entry.IEntryService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "entry")
 public class EntryController {
+    private static final Log LOG = LogFactory.getLog(EntryController.class);
     private final IEntryService entryService;
 
     /**
@@ -28,6 +31,7 @@ public class EntryController {
     @Autowired
     public EntryController(final IEntryService entryService) {
         this.entryService = entryService;
+        LOG.info("Created entry controller with service:" + entryService);
     }
 
     /**
@@ -39,6 +43,7 @@ public class EntryController {
      */
     @GetMapping(path = "/{apiKey}/{tableName}")
     public Object getAllEntries(@PathVariable final String apiKey, @PathVariable final String tableName) {
+        LOG.info("Getting all entries for api key:" + apiKey + " table name:" + tableName);
         return entryService.getAllEntries(apiKey, tableName);
     }
 
@@ -52,6 +57,7 @@ public class EntryController {
     @PostMapping(path = "/{apiKey}/{tableName}")
     public void addEntry(@PathVariable final String apiKey, @PathVariable final String tableName,
                          @RequestBody final AddEntryRequest addEntryRequest) {
+        LOG.info("adding entry with api key:" + apiKey + " table name:" + tableName + " request:" + addEntryRequest);
         entryService.addEntry(apiKey, tableName, addEntryRequest.getColumns(), addEntryRequest.getValues());
     }
 
@@ -66,6 +72,8 @@ public class EntryController {
     @DeleteMapping(path = "/{apiKey}/{tableName}/{columnName}/{value}")
     public void deleteEntries(@PathVariable final String apiKey, @PathVariable final String tableName,
                               @PathVariable final String columnName, @PathVariable final String value) {
+        LOG.info("deleting entries with api key:" + apiKey + " table name:" + tableName +
+                " condition column:" + columnName + " condition value:" + value);
         entryService.deleteEntries(apiKey, tableName, columnName, value);
     }
 }

@@ -1,7 +1,7 @@
 package it.me.backyou.user.response;
 
-import it.me.backyou.user.User;
 import it.me.backyou.apikey.ApiKey;
+import it.me.backyou.user.User;
 
 import java.util.ArrayList;
 import java.util.List;

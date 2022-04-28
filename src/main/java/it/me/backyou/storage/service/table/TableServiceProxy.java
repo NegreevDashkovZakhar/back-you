@@ -1,7 +1,7 @@
 package it.me.backyou.storage.service.table;
 
-import it.me.backyou.apikey.service.IApiKeyService;
 import it.me.backyou.apikey.exception.InvalidApiKeyException;
+import it.me.backyou.apikey.service.IApiKeyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

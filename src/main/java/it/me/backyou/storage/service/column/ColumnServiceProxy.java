@@ -25,7 +25,7 @@ public class ColumnServiceProxy implements IColumnService {
      * @param apiKeyService api key service to verify keys
      */
     @Autowired
-    public ColumnServiceProxy(ColumnService actualService, IApiKeyService apiKeyService) {
+    public ColumnServiceProxy(IColumnService actualService, IApiKeyService apiKeyService) {
         this.actualService = actualService;
         this.apiKeyService = apiKeyService;
     }

@@ -86,6 +86,7 @@ public class UserController {
     @DeleteMapping(path = "/apiKey/{email}/{password}")
     public void deleteApiKey(@PathVariable final String email, @PathVariable final String password,
                              @RequestBody final String apiKey) {
-
+        long userId = userService.getUserId(email, password);
+        userService.deleteUserApiKey(userId, apiKey);
     }
 }

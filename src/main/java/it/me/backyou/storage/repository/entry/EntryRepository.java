@@ -33,7 +33,7 @@ public class EntryRepository implements IEntryRepository {
         StringBuilder sqlBuilder = new StringBuilder();
         sqlBuilder.append("INSERT INTO ");
         sqlBuilder.append(tableName);
-        sqlBuilder.append("(");
+        sqlBuilder.append(" (");
         for (int i = 0; i < columns.length - 1; i++) {
             sqlBuilder.append(columns[i]);
             sqlBuilder.append(", ");

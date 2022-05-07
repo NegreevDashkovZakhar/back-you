@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -34,6 +35,7 @@ public class User {
      * Default constructor. does not set any fields
      */
     public User() {
+        this.apiKeys = new HashSet<>();
     }
 
     /**
@@ -45,6 +47,7 @@ public class User {
     public User(final String email, final String password) {
         this.email = email;
         this.password = password;
+        this.apiKeys = new HashSet<>();
     }
 
     public Set<ApiKey> getApiKeys() {

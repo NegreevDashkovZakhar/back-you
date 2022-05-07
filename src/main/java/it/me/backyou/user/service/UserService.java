@@ -1,7 +1,7 @@
 package it.me.backyou.user.service;
 
 import it.me.backyou.apikey.ApiKey;
-import it.me.backyou.apikey.ApiKeyRepository;
+import it.me.backyou.apikey.repository.ApiKeyRepository;
 import it.me.backyou.user.User;
 import it.me.backyou.user.exception.ApiKeyOrUserNotFoundException;
 import it.me.backyou.user.exception.UserAlreadyExistException;
@@ -75,7 +75,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void deleteUserApiKey(long userId, String apiKey) {
+    public void deleteUserApiKey(final long userId, final String apiKey) {
         try {
             ApiKey apiKeyInstance = apiKeyRepository.getApiKeyByValue(apiKey);
             if (apiKeyInstance.getUser().getUserId() != userId) {
@@ -88,6 +88,10 @@ public class UserService implements IUserService {
     }
 
     private boolean userExist(final String email) {
-        return userRepository.userExist(email);
+        try {
+            return userRepository.userExist(email) == 1;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

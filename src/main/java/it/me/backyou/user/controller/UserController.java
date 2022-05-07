@@ -5,6 +5,7 @@ import it.me.backyou.user.service.IUserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Controller for performing all user connected actions.
  * Such as registration, api keys management etc.
  */
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "user")
 public class UserController {
@@ -55,8 +57,8 @@ public class UserController {
      * @param userId id of the specified user
      * @return List of user api keys
      */
-    @GetMapping(path = "/apiKey")
-    public ApiKeysResponse getUserApiKeys(@RequestBody final Long userId) {
+    @GetMapping(path = "/apiKey/{userId}")
+    public ApiKeysResponse getUserApiKeys(@PathVariable final Long userId) {
         LOG.info("get api keys with user id:" + userId);
         ApiKeysResponse apiKeysResponse = new ApiKeysResponse(userService.getUserApiKeys(userId));
         LOG.info("user with id:" + userId + " api keys are:" + apiKeysResponse);

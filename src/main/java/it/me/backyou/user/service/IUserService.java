@@ -11,6 +11,8 @@ public interface IUserService {
     /**
      * Method registering new user
      *
+     * @param email user email
+     * @param password user password
      * @return new user id
      */
     long registerUser(String email, String password);
@@ -35,6 +37,7 @@ public interface IUserService {
      * Method for getting user with specified email id
      *
      * @param email users email
+     * @param password users password
      * @return specified user id
      */
     long getUserId(String email, String password);

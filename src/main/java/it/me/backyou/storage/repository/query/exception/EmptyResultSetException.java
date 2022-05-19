@@ -13,6 +13,8 @@ public class EmptyResultSetException extends Exception {
 
     /**
      * Delegated constructor
+     *
+     * @param message passed message
      */
     public EmptyResultSetException(final String message) {
         super(message);
@@ -20,6 +22,9 @@ public class EmptyResultSetException extends Exception {
 
     /**
      * Delegated constructor
+     *
+     * @param message passed message
+     * @param cause passed cause
      */
     public EmptyResultSetException(final String message, final Throwable cause) {
         super(message, cause);
@@ -27,6 +32,8 @@ public class EmptyResultSetException extends Exception {
 
     /**
      * Delegated constructor
+     *
+     * @param cause passes cause
      */
     public EmptyResultSetException(final Throwable cause) {
         super(cause);
